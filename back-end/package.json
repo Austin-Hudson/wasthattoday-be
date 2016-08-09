@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "nodemon": "^1.10.0",
     "semantics3-node": "0.0.3"
   }
 }
