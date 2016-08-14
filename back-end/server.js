@@ -9,14 +9,6 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-/* static route */
-app.use(express.static(__dirname + '/public'))
-
-/* config for browser history in react */
-app.get('*', (req, res) =>
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-)
-
 let api_key = process.env.api_key;
 let api_secret = process.env.api_secret;
 let sem3 = require('semantics3-node')(api_key, api_secret);
