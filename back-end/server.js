@@ -3,7 +3,7 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 let path = require('path');
 let app = express();
-let PORT = process.env.PORT || 80;
+let PORT = process.env.PORT || 8080;
 
 app.use(cors());
 
