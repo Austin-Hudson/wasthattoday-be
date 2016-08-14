@@ -1,12 +1,21 @@
-var express = require('express');
-var cors = require('cors');
-var bodyParser = require('body-parser');
-var app = express();
-var PORT = process.env.PORT || 5555;
+let express = require('express');
+let cors = require('cors');
+let bodyParser = require('body-parser');
+let path = require('path');
+let app = express();
+let PORT = process.env.PORT || 8080 || 5000;
 
 app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+/* static route */
+app.use(express.static(__dirname + '/public'))
+
+/* config for browser history in react */
+app.get('*', (req, res) =>
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+)
 
 let api_key = process.env.api_key;
 let api_secret = process.env.api_secret;
@@ -20,7 +29,7 @@ app.get('/search/:productName', function(request, response){
           console.log("Error has occurred", err);
            return;
         }
-        response.send(JSON.stringify(products))
+        response.send(products);
     })
   })
 
